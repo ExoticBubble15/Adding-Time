@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TimeAdder
+public class LapAdder
 {
     public static void main(String[] args)
     {
