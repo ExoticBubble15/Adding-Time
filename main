@@ -1,0 +1,79 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class TimeAdder
+{
+    public static void main(String[] args)
+    {
+        Scanner input = new Scanner(System.in);
+        int repeat = 1;
+        int minutes;
+        double seconds;
+        int hours = 0;
+        int totalMinutes = 0;
+        double totalSeconds = 0;
+        ArrayList<String> repTimes = new ArrayList<String>();
+        
+        while(true)
+        {
+            System.out.println("Rep #" + repeat);
+            
+            System.out.println("Enter the amount of MINUTES (-1 to stop).");
+            minutes = input.nextInt();   
+            
+            if(minutes == -1)
+            {
+                break;
+            }
+            
+            totalMinutes += minutes;
+            
+            System.out.println("");
+            
+            System.out.println("Enter the amount of SECONDS.");
+            seconds = input.nextDouble();
+            
+            totalSeconds += seconds;
+            
+            System.out.println("----------------------------------------------------------------");
+            repeat ++;
+            
+            if(seconds < 10)
+            {
+                repTimes.add(minutes + ":0" + seconds);
+            }
+            else
+            {
+                repTimes.add(minutes + ":" + seconds);
+            }
+        }
+        
+        System.out.println("");
+        System.out.println("-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~");
+        
+        while(totalSeconds >= 60)
+        {
+            totalSeconds -= 60;
+            totalMinutes += 1;
+        }
+        
+        while(totalMinutes >= 60)
+        {
+            totalMinutes -= 60;
+            hours += 1;
+        }
+        
+        System.out.println("Total Reps: " + (repeat-1));
+        System.out.println("Total Time:");
+        System.out.println(hours + " hours");
+        System.out.println(totalMinutes + " minutes");
+        System.out.println(Math.round(totalSeconds * 1000.0) / 1000.0 + " seconds");
+
+        System.out.println("~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-");
+        
+        for(int i = 0; i < repTimes.size(); i++)
+        {
+            System.out.println(repTimes.get(i));
+        }
+    }
+}
